@@ -48,13 +48,9 @@ def scrape():
     # loop through hemisphere images
     for i in mars_hemispheres:
         hemisphere = i.find('div', class_="description")
-        title = hemisphere.h3.text
-        hemisphere_link = hemisphere.a["href"]
-        browser.visit(usgs_url + hemisphere_link)
-        image_html = browser.html
-        image_soup = BeautifulSoup(image_html, 'html.parser')
-        image_link = image_soup.find('div', class_='downloads')
-        image_url = image_link.find('li').a['href']
+        title = hemisphere.h3.get_text()
+        hemisphere_link = i.find('img')['src']
+        image_url = usgs_url + hemisphere_link
         # create dictionary for images and title
         hemisphere_dict = {}
         hemisphere_dict['title'] = title
