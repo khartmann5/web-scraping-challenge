@@ -36,7 +36,32 @@ def scrape():
     # facts_soup = BeautifulSoup(html, 'html.parser')
     # mars_dict['mars_facts'] = soup.find_all("table", class_="tablepress tablepress-id-p-mars")[0]
 
-    
+    # Mars Hemispheres
+    hemisphere_url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
+    usgs_url = "https://astrogeology.usgs.gov"
+    browser.visit(hemisphere_url)
+    html = browser.html
+    hemisphere_soup = BeautifulSoup(html, 'html.parser')
+    all_hemispheres = hemisphere_soup.find('div', class_='collapsible results')
+    mars_hemispheres = all_hemispheres.find_all('div', class_='item')
+    hemisphere_images = []
+    # loop through hemisphere images
+    for i in mars_hemispheres:
+        hemisphere = i.find('div', class_="description")
+        title = hemisphere.h3.text
+        hemisphere_link = hemisphere.a["href"]
+        browser.visit(usgs_url + hemisphere_link)
+        image_html = browser.html
+        image_soup = BeautifulSoup(image_html, 'html.parser')
+        image_link = image_soup.find('div', class_='downloads')
+        image_url = image_link.find('li').a['href']
+        # create dictionary for images and title
+        hemisphere_dict = {}
+        hemisphere_dict['title'] = title
+        hemisphere_dict['img_url'] = image_url
+        mars_dict['mars_hemispheres'] = hemisphere_images.append(hemisphere_dict)
+
+
 
 
 
