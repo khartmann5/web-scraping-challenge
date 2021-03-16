@@ -40,25 +40,36 @@ def scrape():
     mars_dict["mars_fact_table"] = fact_table
 
     # Mars Hemispheres
-    # hemisphere_url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
-    # usgs_url = "https://astrogeology.usgs.gov"
-    # browser.visit(hemisphere_url)
-    # html = browser.html
-    # hemisphere_soup = BeautifulSoup(html, 'html.parser')
-    # all_hemispheres = hemisphere_soup.find('div', class_='collapsible results')
-    # mars_hemispheres = all_hemispheres.find_all('div', class_='item')
-    # hemisphere_images = []
-    # # loop through hemisphere images
-    # for i in mars_hemispheres:
-    #     hemisphere = i.find('div', class_="description")
-    #     title = hemisphere.h3.get_text()
-    #     hemisphere_link = i.find('img')['src']
-    #     image_url = usgs_url + hemisphere_link
-    #     # create dictionary for images and title
-    #     hemisphere_dict = {}
-    #     hemisphere_dict['title'] = title
-    #     hemisphere_dict['img_url'] = image_url
-    #     mars_dict['mars_hemispheres'] = hemisphere_images.append(hemisphere_dict)
+    hemisphere_url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
+    usgs_url = "https://astrogeology.usgs.gov"
+    browser.visit(hemisphere_url)
+    html = browser.html
+    hemisphere_soup = BeautifulSoup(html, 'html.parser')
+    all_hemispheres = hemisphere_soup.find('div', class_='collapsible results')
+    mars_hemispheres = all_hemispheres.find_all('div', class_='item')
+    hemisphere_images = []
+    # loop through hemisphere images
+    for i in mars_hemispheres:
+        # error handling
+        try:
+            # extract title
+            hemisphere = i.find('div', class_="description")
+            title = hemisphere.h3.text
+            print(title)
+            # extract image url
+            hemisphere_link = hemisphere.a['href']
+            browser.visit(usgs_url + hemisphere_link)
+            html = browser.html
+            image_soup = BeautifulSoup(html, 'html.parser')
+            image_hem = soup.find('li').a['href']
+            print(image_hem)
+            # create dictionary for images and title
+            hemisphere_dict = {}
+            hemisphere_dict['title'] = title
+            hemisphere_dict['img_url'] = image_hem
+            mars_dict['mars_hemispheres'] = hemisphere_images.append(hemisphere_dict)
+        except Exception as e:
+            print(e)
 
 
 
