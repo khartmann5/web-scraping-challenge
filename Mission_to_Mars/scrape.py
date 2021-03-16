@@ -1,6 +1,7 @@
 from splinter import Browser
 from bs4 import BeautifulSoup
 from webdriver_manager.chrome import ChromeDriverManager
+import pandas as pd
 import requests
 import pymongo
 
@@ -29,11 +30,14 @@ def scrape():
     mars_dict["featured_image_url"] = featured_url + image_url
 
     # Mars facts in a html table
-    # facts_url = "https://space-facts.com/mars/"
-    # browser.visit(facts_url)
-    # html = browser.html
-    # facts_soup = BeautifulSoup(html, 'html.parser')
-    # mars_dict['mars_facts'] = soup.find_all("table", class_="tablepress tablepress-id-p-mars")[0]
+    facts_url = "https://space-facts.com/mars/"
+    tables = pd.read_html(facts_url)
+    mars_facts = tables[0]
+    mars_facts.columns = ['Description','Value']
+    mars_facts.set_index("Description", inplace=True)
+    fact_table = mars_facts.to_html()
+    fact_table.replace('\n','')
+    mars_dict["mars_fact_table"] = fact_table
 
     # Mars Hemispheres
     # hemisphere_url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"

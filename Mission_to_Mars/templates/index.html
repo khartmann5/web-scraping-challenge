@@ -32,8 +32,11 @@
             <img src="{{mars_dict.featured_image_url}}" alt="Featured Mars Image">
 		</div>
 		<div class="col-md-4">
+
+      <div class="card">
             <h3>Mars Facts</h3>
-            {{mars_dict.mars_facts}}
+            {{mars_dict.mars_fact_table | safe}}
+      </div>
 		</div>
 	  </div>
 
