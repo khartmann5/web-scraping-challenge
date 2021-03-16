@@ -40,23 +40,24 @@
 	  </div>
 
     <div class="row">
+      <div class="col-md-12">
         <h2 style="text-align: center;">Mars Hemispheres</h2>
-    </div>
-    <!-- <div class="row">       
-        {% for hemisphere in mars_dict.mars_hemispheres %} 
+        <div class="row">
+          {% for hem in mars_dict.mars_hemispheres %} 
           <div class="col-6 border">
-          </br>
                 <div>
-                  <img src="{{hemisphere.img_url}}" alt="mars hemispheres">
+                  <img src="{{hem.img_url}}" alt="mars hemispheres">
                 </div>
 
                 <div>
-                  <h4> {{hemisphere.title}} </h4>  
+                  <h4> {{hem.title}} </h4>  
                 </div>
-        
           </div>
         {% endfor %}
-    </div>  -->
+         
+        </div>
+      </div>
+    </div>
 
   </div>
 
