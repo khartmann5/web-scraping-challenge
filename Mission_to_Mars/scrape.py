@@ -29,15 +29,36 @@ def scrape():
     image_url = image_soup.find_all('img')[1]['src']
     mars_dict["featured_image_url"] = featured_url + image_url
 
-    # Mars facts in a html table
+    # Mars facts in html table using a for loop
+    # read html from website
     facts_url = "https://space-facts.com/mars/"
-    tables = pd.read_html(facts_url)
-    mars_facts = tables[0]
-    mars_facts.columns = ['Description','Value']
-    mars_facts.set_index("Description", inplace=True)
-    fact_table = mars_facts.to_html()
-    fact_table.replace('\n','')
-    mars_dict["mars_fact_table"] = fact_table
+    browser.visit(facts_url)
+    # time.sleep(5)
+    # create a Beautfiul Soup object
+    html = browser.html
+    soup = BeautifulSoup(html, 'html.parser')
+    mars_facts=soup.find_all('tr')
+    # loop through fact table
+    mars_facts_table = []
+    count = 0
+    for fact in mars_facts:    
+        if count == 9:
+            break   
+        try:
+            column = fact.find('td', class_="column-1").text
+            print(column)
+            value = fact.find('td', class_="column-2").text
+            print(value)
+            # Create a dictionary
+            table_dict = {}
+            table_dict["column1"] = column
+            table_dict["column2"] = value
+            mars_facts_table.append(table_dict)  
+        except Exception as e:
+            print(e)
+        count = count + 1
+
+    mars_dict["mars_facts"] = mars_facts_table
 
     # Mars Hemispheres
     hemisphere_url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
