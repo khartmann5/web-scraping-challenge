@@ -6,9 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mission to Mars</title>
-  <!-- <link rel="stylesheet" href="reset.css">  -->
-  <!-- <link rel="stylesheet" href="bootstrap.css"> -->
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
   <link rel="stylesheet" href="https://bootswatch.com/3/united/bootstrap.min.css">
 </head>
 
@@ -65,26 +62,19 @@
       <div class="page-header">
         <h2 style="text-align: center;">Mars Hemispheres</h2>
       </div>
-        <!-- <div class="row"> -->
-          <!-- <div class="col-6 border"> -->
             {% for hem in mars_dict.mars_hemispheres %} 
                 <div class="col-md-6">
                   <div class="thumbnail">
-                  <img src="{{hem.img_url}}" alt="mars hemispheres" width=100%>
+                  <img src="{{hem.img_url}}" alt="mars hemispheres" width=75%>
                     <div class="caption" style="text-align: center;">
                     <h4> {{hem.title}} </h4>  
                     </div>
                   </div>
                 </div> 
             {% endfor %}
-          <!-- </div> -->
-        <!-- </div> -->
     </div>
 
   </div>
-
-  <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script> -->
 
 </body>
 
