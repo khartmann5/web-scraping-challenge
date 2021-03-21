@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from webdriver_manager.chrome import ChromeDriverManager
 import requests
 import pymongo
+import time
 
 def scrape():
     executable_path = {'executable_path': ChromeDriverManager().install()}
@@ -13,6 +14,7 @@ def scrape():
     # Mars news title and paragraph
     url = "https://mars.nasa.gov/news/"
     browser.visit(url)
+    time.sleep(1)
     html = browser.html
     soup = BeautifulSoup(html, "html.parser")
     mars_dict["title"] = soup.find_all("div", class_="content_title")[1].get_text()
