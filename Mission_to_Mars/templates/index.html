@@ -8,7 +8,8 @@
   <title>Mission to Mars</title>
   <!-- <link rel="stylesheet" href="reset.css">  -->
   <!-- <link rel="stylesheet" href="bootstrap.css"> -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://bootswatch.com/3/united/bootstrap.min.css">
 </head>
 
 <body>
@@ -36,7 +37,7 @@
     <div class="col-md-4">
       <div>
         <h3>Mars Facts</h3>
-        <table class="table table-hover" border: 1px solid black; border-collapse: collapse;>
+        <table class="table table-hover table-bordered">
           <thead>
             <tr>
               <th scope="col">Description</th>
@@ -69,7 +70,7 @@
             {% for hem in mars_dict.mars_hemispheres %} 
                 <div class="col-md-6">
                   <div class="thumbnail">
-                  <img src="{{hem.img_url}}" alt="mars hemispheres" width="187px" height="187px">
+                  <img src="{{hem.img_url}}" alt="mars hemispheres" width=100%>
                     <div class="caption" style="text-align: center;">
                     <h4> {{hem.title}} </h4>  
                     </div>
