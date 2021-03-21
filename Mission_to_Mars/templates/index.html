@@ -61,23 +61,23 @@
     </div>  
 
     <div class="row">
-      <div class="col-md-12">
+      <div class="page-header">
         <h2 style="text-align: center;">Mars Hemispheres</h2>
-        <div class="row">
-          <div class="col-6 border">
-            {% for hem in mars_dict.mars_hemispheres %} 
-                <div>
-                  <img src="{{hem.img_url}}" alt="mars hemispheres" width=50%>
-                </div>
-
-                <div>
-                  <h4> {{hem.title}} </h4>  
-                </div>
-            {% endfor %}
-          </div>
-         
-        </div>
       </div>
+        <!-- <div class="row"> -->
+          <!-- <div class="col-6 border"> -->
+            {% for hem in mars_dict.mars_hemispheres %} 
+                <div class="col-md-6">
+                  <div class="thumbnail">
+                  <img src="{{hem.img_url}}" alt="mars hemispheres" width="187px" height="187px">
+                    <div class="caption" style="text-align: center;">
+                    <h4> {{hem.title}} </h4>  
+                    </div>
+                  </div>
+                </div> 
+            {% endfor %}
+          <!-- </div> -->
+        <!-- </div> -->
     </div>
 
   </div>
