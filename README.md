@@ -1,6 +1,6 @@
 # web-scraping-challenge
 
-## **Note: If an error occurs refresh the page and it should work**
+## *Note: If an error occurs refresh the page and it should work*
 
 Built a web application to scrap multiple websites for Mars data and display the information using `html`.
 
