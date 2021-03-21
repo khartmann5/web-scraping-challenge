@@ -16,7 +16,7 @@ def scrape():
     html = browser.html
     soup = BeautifulSoup(html, "html.parser")
     mars_dict["title"] = soup.find_all("div", class_="content_title")[1].get_text()
-    mars_dict["paragraph"] = soup.find("div", class_="article_teaser_body").text
+    mars_dict["paragraph"] = soup.find_all("div", class_="article_teaser_body")[0].get_text()
 
     # Featured Mars Image
     jpl_image_url = 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/index.html'
