@@ -22,7 +22,7 @@
       <div class="col-md-12">
         <h2>Latest Mars News</h2>
         <h4 class="heading">{{mars_dict.title}}</h4>
-        <small>{{mars_dict.paragraph}}</small>
+        <p class="text-muted">{{mars_dict.paragraph}}</p>
       </div>
     </div>
 
@@ -34,7 +34,7 @@
     <div class="col-md-4">
       <div>
         <h3>Mars Facts</h3>
-        <table class="table table-hover table-bordered">
+        <table class="table table-hover table-bordered table-primary">
           <thead>
             <tr>
               <th scope="col">Description</th>
@@ -43,7 +43,7 @@
           </thead>
           <tbody>
             {% for col in mars_dict.mars_facts %} 
-            <tr class="table-primary">
+            <tr class="active">
               <td>
                     {{col.column1}}
               </td>
