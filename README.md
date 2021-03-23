@@ -1,6 +1,6 @@
 # web-scraping-challenge
 
-Built a web application to scrap multiple websites for Mars data and display the information using `html`.
+Built a web application to scrape multiple websites for Mars data and display the information using `html`.
 
 Used a `Jupyter Notebook` to do the initial analysis to test the scrape code with `BeautifulSoup` and `Requests/Splinter`.
 
